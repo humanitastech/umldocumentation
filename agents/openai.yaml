@@ -1,0 +1,4 @@
+interface:
+  display_name: "UML Documentation"
+  short_description: "Descubra requisitos e documente software com UML"
+  default_prompt: "Use $umldocumentation para definir requisitos e MVP ou documentar a implementação deste projeto com casos de uso e PlantUML."
