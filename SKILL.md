@@ -2,7 +2,7 @@
 name: umldocumentation
 description: "Conduz entrevistas de requisitos, define escopo, MVP e etapas, e cria ou atualiza documentação versionada. Analisa código existente para documentar requisitos, casos de uso e diagramas PlantUML. Use em projetos novos ou existentes; distingue comportamento observado, requisitos confirmados, propostas e lacunas."
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 # UML Documentation
@@ -58,6 +58,10 @@ Preserve nomes e extensões já adotados, inclusive um `.mdl` textual solicitado
 Leia [references/plantuml.md](references/plantuml.md) antes de escrever os diagramas. Os blocos devem poder ser copiados individualmente e conter `@startuml`/`@enduml`. Se houver muitas jornadas, use vários blocos no mesmo documento ou a organização do projeto. Não limite a quantidade ao exemplo TollPass.
 
 ## Conferir e entregar
+
+- Antes de atualizar uma documentação existente, registre a revisão de origem e a revisão documentada. Identifique quais requisitos, casos e diagramas o diff afeta e preserve seus IDs. Quando um requisito for substituído ou retirado por decisão confirmada, registre a transição e os consumidores afetados.
+- Para cada jornada crítica, confira a cadeia requisito → critério verificável → caso de uso → passo do fluxo → fonte ou teste. Registre itens sem evidência, divergências de contrato e verificações pendentes. Mantenha o estado de confirmação do requisito independente do estado de implementação e do resultado de teste.
+- Escolha o diagrama pelo que ele precisa esclarecer. Use sequência para colaboração e ordem temporal, estados para transições e invariantes e classes para estrutura comprovada. Em interfaces assíncronas, distinga publicação, entrega, processamento e falhas, incluindo repetição quando ela alterar o resultado. Entregue somente os artefatos pedidos em tarefas pontuais.
 
 Confira IDs, links, atores, pré/pós-condições, permissão sobre operações e recursos, estados de configuração e consistência entre chamadas desenhadas e código. Mantenha o inventário fora de sua própria lista de entradas para evitar autorreferência. Se um artefato não se aplicar, explique o motivo no respectivo documento em vez de inventar conteúdo.
 
