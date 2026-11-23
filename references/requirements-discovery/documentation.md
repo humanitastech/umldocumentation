@@ -1,49 +1,29 @@
-# Estrutura e qualidade da documentação
+# Documentation structure and quality
 
-Adapte os nomes à estrutura existente. Para um projeto novo, um ponto de partida enxuto é `docs/requirements/overview.md`, `requirements.md`, `roadmap.md` e `decisions.md`. Separe diagramas, glossário ou matriz de acesso apenas quando o volume justificar. Não crie arquivos vazios.
+Preserve existing names. For a new project consider docs/requirements/overview.md, requirements.md, roadmap.md and decisions.md. Separate diagrams/glossary/access matrices only where useful; never create empty scaffolding.
 
-## Visão e descoberta
+## Vision and requirements
 
-Registre problema, público, envolvidos e responsáveis por decisões, objetivos e medidas de sucesso, escopo incluído/excluído, restrições, integrações, premissas e questões abertas. Identifique a fonte e a data de decisões relevantes. Ausência de resposta deve continuar visível.
+Record problem, audience, stakeholders/decision owners, goals/measures, included/excluded scope, constraints, integrations, assumptions and open questions. Identify source/date for decisions; unanswered questions stay visible.
 
-## Requisitos
+Preserve stable IDs (for example FR, NFR, BR, UC and DEC); never renumber to fill gaps or reuse retired IDs. Each requirement needs an unambiguous observable statement, need/source, proposed/approved/rejected/retired decision state, separate evidence-backed delivery state, priority/stage/dependencies, known planned/delivered versions, acceptance criteria, rules and open exceptions.
 
-Use IDs por categoria, como RF-001 (funcional), RNF-001 (qualidade), RN-001 (regra de negócio), UC-001 (caso de uso) e DEC-001 (decisão). Adapte os prefixos existentes; nunca renumere para fechar lacunas nem reutilize IDs descontinuados.
+Illustrative proposal only: FR-001 — Account recovery through a previously confirmed channel. Mechanism/expiry remain pending. Candidate criterion: after completion, the old credential fails. Decisions needed: active-session handling and unavailable-channel behavior. This is not an approved requirement for any project.
 
-Para cada requisito, registre:
+Use Given/When/Then when helpful, not universally. Criteria must specify observable results/rejections rather than repeat the requirement; include exceptions/durable effects where relevant.
 
-- ID e título; enunciado inequívoco e observável.
-- Necessidade e origem: quem solicitou ou qual evidência fundamenta o item.
-- Estado da decisão: proposto, aprovado, rejeitado ou descontinuado.
-- Estado de entrega separado: não iniciado, em andamento, implementado ou validado, somente com evidência disponível.
-- Prioridade, etapa e dependências; versão prevista/entregue se conhecidas.
-- Critérios de aceitação e regras relacionadas.
-- Dúvidas, exceções e fontes relevantes.
+## Cases, domain and access
 
-Exemplo ilustrativo, que não constitui requisito aprovado de nenhum projeto:
+Use cases need actors, objective, trigger, prerequisites, main/alternate/error flows, postconditions and requirement links. Authentication, action authorization and object authorization differ. Domain models include concepts, relationships, cardinalities/invariants; do not automatically turn technical classes into business concepts. Clarify required/unique data, lifecycle and retention where needed.
 
-> RF-001 — Recuperar acesso. O titular de uma conta poderá solicitar recuperação por um canal previamente confirmado. Proposta pendente: mecanismo e prazo de validade. Critério candidato: após concluir a recuperação, a credencial anterior deixa de permitir acesso. Decisões pendentes: tratamento de sessões ativas e indisponibilidade do canal.
+Access matrices link role, action, resource and condition (such as own records only). Unknown permissions stay pending, never implicitly allowed.
 
-Use Dado/Quando/Então quando facilitar a avaliação; não o imponha a todo requisito. Critérios devem afirmar resultados observáveis e rejeições, não simplesmente repetir o enunciado. Inclua exceções e consequências persistidas quando relevantes.
+## Diagrams, roadmap and decisions
 
-## Casos de uso, domínio e acesso
+Use editable diagrams for concrete questions, with IDs/legend and explicit conceptual-versus-implemented status. State views need valid transitions, guards and final states; sequences need relevant failures/retries.
 
-Em casos de uso, registre atores, objetivo, gatilho, precondições, fluxo principal, alternativas, erros e pós-condições. Relacione os requisitos. Separe autenticação, autorização sobre a operação e autorização sobre o recurso.
+Stages link useful deliverables to completion criteria. Separate approved scope from future options; feature lists are not estimated schedules. Decisions need ID/date/question/options, decision and confirming owner, rationale/impact and superseded decisions. Preserve proposed state until evidence of confirmation exists.
 
-No domínio, registre conceitos, relacionamentos, cardinalidades e invariantes relevantes. Não transforme automaticamente classes técnicas em conceitos de negócio. Para dados, esclareça obrigatoriedade, unicidade, ciclo de vida e retenção quando necessário.
+## QA review
 
-Em uma matriz de acesso, relacione papel, ação, recurso e condição (por exemplo, apenas registros próprios). Marque permissões desconhecidas como pendentes; não presuma acesso por omissão.
-
-## Diagramas proporcionais
-
-Selecione diagramas para resolver dúvidas concretas. Mantenha fonte editável, legenda quando necessária e vínculo com IDs. Diferencie desenho conceitual de arquitetura implementada. Para estados, explicite transições válidas, guardas e estados finais; para sequência, inclua falhas e repetições quando alterarem as garantias do fluxo.
-
-## Roadmap e decisões
-
-Associe cada etapa a uma entrega útil e critérios de conclusão. Mantenha escopo aprovado separado de possibilidades futuras. Não trate uma lista de funcionalidades como cronograma estimado.
-
-Para uma decisão, registre ID, data, questão, alternativas, decisão e responsável pela confirmação, justificativa, impacto e decisões substituídas. Um item pode permanecer proposto; registre a confirmação apenas quando houver evidência dela.
-
-## Revisão para QA
-
-Verifique se é possível derivar cenários normais, negativos, de limite, acesso, concorrência e recuperação conforme o risco. Documente invariantes e resultados esperados; não confunda uma futura sugestão de teste com teste executado. Uma matriz pode relacionar requisito, critério, cenário e evidência, deixando campos desconhecidos explícitos.
+Ensure normal, negative, boundary, access, concurrency and recovery scenarios can be derived where risks warrant. Record invariants/expected results. Suggested tests are not executed tests; trace requirements, criteria, scenarios and evidence with unknowns explicit.
