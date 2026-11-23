@@ -1,59 +1,28 @@
 # UML Documentation
 
-Skill para conduzir descoberta de requisitos e documentar software em Markdown e PlantUML. Pode ser usada antes de existir código, para definir escopo, MVP, etapas, critérios de aceitação e baselines, ou com uma implementação existente, para registrar o comportamento observado e compará-lo com os requisitos aprovados.
+Requirements discovery and code-grounded Markdown/PlantUML documentation for new or existing software. Define scope, MVP/stages, acceptance criteria and baselines, or record actual behavior and compare it with approved needs.
 
-## O que gera
+Outputs include functional/quality requirements, business rules, detailed use cases, editable use-case/class/sequence diagrams and traceability to code/tests/gaps. Use the project's existing documentation location, otherwise docs/. Preserve IDs and distinguish observed, confirmed, proposed and executed-validated states.
 
-- Requisitos funcionais e não funcionais, regras e critérios de aceitação.
-- Catálogo de casos de uso com descrições completas.
-- Código PlantUML dos diagramas de casos de uso, classes e sequência.
-- Matriz de rastreabilidade entre requisitos, casos, código, testes e lacunas.
+## Installation and use
 
-Os arquivos são criados ou atualizados na pasta documental do projeto, normalmente `docs/`. Nomes, IDs e decisões já existentes são preservados. A análise diferencia comportamento observado, intenção confirmada, inferências e cenários realmente testados.
-
-## Instalação e uso
-
-Copie esta pasta para a pasta de skills do Codex, normalmente `~/.codex/skills/umldocumentation`, mantendo `SKILL.md` na raiz da skill.
-
-Exemplo de solicitação:
+Install SKILL.md, agents/, references/ and scripts/ in a personal folder named umldocumentation.
 
 ```text
-Use $umldocumentation para analisar este projeto e gerar requisitos,
-casos de uso detalhados e diagramas PlantUML na pasta docs.
+Use $umldocumentation to document this project with requirements, detailed use
+cases and PlantUML diagrams. Keep evidence and open decisions explicit.
 ```
 
-Também é possível indicar raízes de vários projetos. A skill mantém a documentação e a cobertura separadas por projeto.
+For a new product request a requirements interview, useful MVP and recorded criteria. Multiple project roots retain separate coverage/IDs. Sources are English; output follows the requested language.
 
-Para iniciar sem código, peça: `Use $umldocumentation para entrevistar-me sobre o projeto, propor um MVP e registrar as decisões e os requisitos.`
-
-## Inventário auxiliar
-
-O inventariador requer Python 3.10+. Com `rg` disponível, respeita suas regras de exclusão. O fallback sem `rg` informa que não interpreta `.gitignore`.
+## Optional inventory
 
 ```text
-python scripts/inventory.py /caminho/do/projeto --output /caminho/do/projeto/docs/INVENTARIO_CODIGO.json
+python scripts/inventory.py <project-root> --output <project-root>/docs/CODE_INVENTORY.json
 ```
 
-Para atualizar explicitamente um inventário existente, acrescente `--force`. Sem essa opção, um arquivo de destino existente é preservado.
+Requires Python 3.10+. With rg, discovery respects rg ignore rules; fallback does not interpret .gitignore and says so. The helper lists metadata, not semantic behavior or final documents. Review heuristic secret exclusions before reading files. Existing output is protected unless --force is explicitly used.
 
-O script lista caminhos e metadados; não interpreta o comportamento do programa nem gera sozinho os documentos. A leitura semântica e a produção documental são feitas pela IA seguindo a skill. As exclusões de arquivos sensíveis são heurísticas e os candidatos devem ser revisados antes da leitura.
+## Limits
 
-## Estrutura
-
-```text
-SKILL.md                       Instruções de análise e geração
-agents/openai.yaml             Metadados para seleção no Codex
-scripts/inventory.py           Inventário de candidatos à análise
-references/documentation.md    Conteúdo documental e rastreabilidade
-references/plantuml.md         Modelagem e validação dos diagramas
-references/requirements-discovery/  Entrevistas, escopo, MVP e versionamento
-```
-
-## Limites
-
-- A documentação gerada precisa preservar a diferença entre implementação e requisito aprovado.
-- Inventariar arquivos não significa ter analisado todo o código.
-- Dependências, arquivos gerados, segredos e links externos são excluídos por padrão; as limitações de cobertura devem ser registradas.
-- Diagramas só são declarados compilados ou renderizados quando essa verificação realmente ocorrer.
-- Não há monitoramento contínuo ou publicação automática. A skill atua no escopo da tarefa indicada.
-- Não executa uma auditoria completa de segurança nem certifica conformidade do software.
+Inventory is not full analysis. Do not invent requirements, classes, targets or executed tests. Diagrams are only reported compiled/rendered after actual checks. No automatic monitoring, publication or security certification is provided. See [SKILL.md](SKILL.md).
